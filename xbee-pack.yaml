@@ -1,0 +1,15 @@
+schema-version: 1.0
+
+description: |
+
+builder: ./delve-builder
+
+var:
+  version: 1.8.0
+
+dependency: golang
+
+provision:
+  - copy:
+      builder: bin
+      todir: /usr/local/go/bin
