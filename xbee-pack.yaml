@@ -1,15 +1,22 @@
 schema-version: 1.0
 
-description: |
-
-builder: ./delve-builder
-
-var:
-  version: 1.8.0
+type: builder
 
 dependency: golang
 
+in:
+  version: 1.8.0
+
 provision:
-  - copy:
-      builder: bin
-      todir: /usr/local/go/bin
+  - url:
+      from: https://github.com/go-delve/delve/archive/refs/tags/v{% version %}.tar.gz
+      todir: "{% xbeeSrc %}"
+  - folder: "{% xbeeOut %}/usr/local/go/bin"
+
+build:
+  - shell:
+      cmds:
+       - go install github.com/go-delve/delve/cmd/dlv
+       - cp /root/go/bin/* {% xbeeOut %}/usr/local/go/bin
+      directory: "{% xbeeSrc %}/delve-{% version %}"
+
