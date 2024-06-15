@@ -1,7 +1,7 @@
 schema-version: 1.0
 
 
-builder: ./builder
+builder: ./delve-builder
 
 provision:
   - systempath: /usr/local/go/bin
