@@ -1,15 +1,10 @@
 schema-version: 1.0
 
-type: builder
-
 dependency: golang
-
-var:
-  version: 1.21.1
 
 provision:
   - url:
-      from: https://github.com/go-delve/delve/archive/refs/tags/v{{ .version }}.tar.gz
+      from: https://github.com/go-delve/delve/archive/refs/tags/v{{ .xbee.version }}.tar.gz
       todir: "{{ .xbee.src }}"
   - folder: "{{ .xbee.out }}/usr/local/go/bin"
 
@@ -18,7 +13,7 @@ build:
       cmds:
        - go install github.com/go-delve/delve/cmd/dlv
        - cp /root/go/bin/* {{ .xbee.out }}/usr/local/go/bin
-      directory: "{{ .xbee.src }}/delve-{{ .version }}"
+      directory: "{{ .xbee.src }}/delve-{{ .xbee.version }}"
 
 
 # dlv --listen=:40000 --headless=true --api-version=2 --accept-multiclient exec xbeecontainer

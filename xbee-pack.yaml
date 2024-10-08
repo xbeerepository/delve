@@ -3,5 +3,9 @@ schema-version: 1.0
 
 builder: ./delve-builder
 
+var:
+  xbee:
+    version: 1.21.1
+
 provision:
   - systempath: /usr/local/go/bin
