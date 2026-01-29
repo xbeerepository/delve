@@ -1,11 +1,8 @@
 schema-version: 1.0
 
-#dependency: golang
+dependency: golang
 
 provision:
-  - pkg:
-      name: golang-go
-      update: true
   - url:
       from: https://github.com/go-delve/delve/archive/refs/tags/v{{ .xbee.version }}.tar.gz
       todir: "{{ .xbee.src }}"
