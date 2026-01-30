@@ -10,7 +10,7 @@ provision:
 
 build:
   - shell:
-      cmds:
+      cmd:
        - go install github.com/go-delve/delve/cmd/dlv
        - cp /root/go/bin/* {{ .xbee.out }}/usr/local/go/bin
       directory: "{{ .xbee.src }}/delve-{{ .xbee.version }}"
